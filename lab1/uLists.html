@@ -1,0 +1,35 @@
+<html>
+<link href="styleSheet.css" rel="stylesheet"  type="text/css">
+
+<a href= "index.html"> Home </a>
+
+<h2> Facts About Me</h2>
+<ul>
+  <li> Has been married since August 2016 </li>
+  <li>Expecting a baby boy in December 2018 </li>
+  <li> Proud owner of a wild animal disguised as a house cat (click it and see)</li>
+</ul>
+
+<script>
+var onImg= "cat.jpg";
+var offImg= "wildCat.jpg";
+</script>
+<img src="cat.jpg" width="200" height="267" onclick="this.src = this.src == offImg ? onImg : offImg;"/>
+
+<script type="text/javascript">
+var done =0;
+function ChangeImg()
+{
+  if(done){
+    document.getElementById("cat").src="cat.jpg"
+    done =0;
+  }
+  else {
+    document.getElementById("cat").src="wildCat.jpg"
+    done =1;
+
+  }
+}
+
+
+</html>
