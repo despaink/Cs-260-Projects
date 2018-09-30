@@ -1,0 +1,14 @@
+body {
+    background-color: lightblue;
+    text-align : center; 
+    color : #4B0082; 
+    font-family: "Times New Roman", Times, serif;
+    font-size : 30px;
+}
+
+input[type=text]{
+    background-color : lavenderblush;
+}
+textarea{
+     background-color : lavenderblush;
+}
