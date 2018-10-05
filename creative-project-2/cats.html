@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cat Facts</title>
+            <link href="styleSheet.css" rel="stylesheet"  type="text/css">
+
+        
+        
+        <script
+          src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous">
+        </script>
+        
+        
+<script>
+       /*global $*/
+        $(document).ready(function() {
+            
+            
+         $("#catButton").click(function(e){
+            
+            e.preventDefault();
+            
+            var myurl= "https://catfact.ninja/fact"
+                        
+
+              console.log(myurl);
+              $.ajax({
+                url : myurl,
+                dataType : "jsonp",
+                type: "GET",
+                success : function(parsed_json) {
+                    
+                    console.log(parsed_json);
+                    
+                    var myFact ="";
+                    myFact = parsed_json['fact'];
+                    
+                    $("#factsFeild").html(myFact);
+                   
+                    
+            
+            
+                }
+              });
+            
+        });
+        
+       
+        });
+        
+    </script>
+    
+    </head>
+    <body>
+        <form>
+            <input id= "catButton" type="submit" value="Click for Cat Fact"/>
+        </form>
+        
+        <div id = "factsFeild">Cat Facts</div>
+        
+    </body>
+</html>
