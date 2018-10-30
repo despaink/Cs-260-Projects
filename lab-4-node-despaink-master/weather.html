@@ -2,13 +2,18 @@
 <head>
 <title>City Finder</title>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 </head>
 <body>
 <form>
-Enter A Utah City: <input type="text" id="cityfield" value=""><br>
+Enter A Utah City: <input type="text" id="cityfield" value=""><input id="weatherButton" type="submit" value="Submit"><br>
 Suggestion: <span id="txtHint">Empty</span>
 </form>
+<p>Current Weather</p>
+        
+<div id="weather">If you want to know the weather, enter a city above.</div>
+<div></div>
 <script>
 $( "#cityfield" ).keyup(function() {
   var url = "getcity?q="+$("#cityfield").val();
@@ -22,7 +27,64 @@ $( "#cityfield" ).keyup(function() {
     $("#txtHint").html(everything);
   });
 });
+        $("#weatherButton").click(function(e){
+            var value = $("#cityfield").val();
+            e.preventDefault();
+            
+            var myurl= "http://api.openweathermap.org/data/2.5/weather?units=imperial&appid=de3c3e366d48ac1d4fae963db00e136a&q=";
+            myurl+= value;
+                        
 
+              console.log(myurl);
+              $.ajax({
+                url : myurl,
+                dataType : "json",
+                success : function(parsed_json) {
+            var location = parsed_json['name'];
+            var weather = parsed_json['weather'][0]['main'];
+            var temp = parsed_json['main']['temp'];
+            var weather_icon = parsed_json['weather'][0]['icon'];
+            var humidity = parsed_json['main']['humidity'];
+            var temp_min = parsed_json['main']['temp_min'];
+            var temp_max = parsed_json['main']['temp_max'];
+            var wind_speed = parsed_json['wind']['speed'];
+            var everything = "<img src=\"http://openweathermap.org/img/w/" + weather_icon + ".png\"/>";
+            everything += "<ul>";
+            everything += "<li>Location: " + location;
+            everything += "<li>Weather: " + weather + " (" + temp + "&#8457;)";
+            everything += "<li>Low: " + temp_min + "&#8457; | High: " + temp_max + "&#8457;";
+            everything += "<li>Humidity: " + humidity + "%";
+            everything += "<li>Wind: " + wind_speed + " mph";
+            everything += "</ul>";
+            $("#weather").html(everything);
+                }
+              });
+            
+        });
+</script>
+
+<br>
+<form>
+Enter A Word: <input type="text" id="defineMe" value=""> <button type='submit' id ="defineButton">Submit</button>
+<br>
+Definition: <span id="define">Empty</span>
+</form>
+<script>
+  $("#defineButton").click(function(event){
+    event.preventDefault();
+    var url ="owl?q=" +$("#defineMe").val();
+        console.log(url);
+        $("defineMe").val = "";
+
+  $.getJSON(url,function(data) {
+    console.log("entered get definition");
+    var everything;
+      $.each(data, function(i,item) {
+        everything += data[i].defenition;
+      });
+    $("#define").html(everything);
+  });
+  });
 </script>
 </body>
 </html>
