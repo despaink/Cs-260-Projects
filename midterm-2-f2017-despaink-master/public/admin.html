@@ -22,7 +22,7 @@
 <h1>Current Products</h1>
 <div ng-repeat="product in products | orderBy:['name']">
 <span class="glyphicon glyphicon-remove" ng-click="delete(product)"></span>
-  {{product.name}} - price {{product.price}} - ordered {{product.purchases}} <img src="{{product.picture}}">
+  {{product.name}} - price {{product.price}} - ordered {{product.purchases}} <img src="{{product.picture}}" height =100 width =150>
 </div>
 </body>
 </html>
