@@ -1,0 +1,14 @@
+body {
+    background-color: lightblue;
+     
+    color : #4B0082; 
+    font-family: "Times New Roman", Times, serif;
+    font-size : 30px;
+}
+
+div{
+  background-color: lightblue;
+}
+form{
+  background-color: lightblue;
+}
