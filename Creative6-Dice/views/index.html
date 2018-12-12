@@ -1,0 +1,62 @@
+<!doctype html>
+<html ng-app="myApp"> 
+    
+<head>
+    <title>User Login and Sessions</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+</head>
+        
+<body>  
+    <div ng-controller="myController">
+        <h4 id="welcomeText">Welcome. You are Logged In as
+            <%= username %>
+        </h4>
+        
+        <p>
+            <h1>Dice Roller</h1>
+            <h3> Tell me how many of each die you would like to roll.</h3>
+            <form>
+                <label for="d4">D4</label>
+                <input type="number" min="0" id="d4" value="0">
+                <br>
+                <label for="d6"> D6</label>
+                <input type="number" id="d6" value="0"/>
+                <br>
+                <label for="d8"> D8</label>
+                <input type="number" id="d8" value="0"/>
+                <br>
+                <label for="d10"> D10</label>
+                <input type="number" id="d10" value="0"/>
+                <br>
+                <label for="d12"> D12</label>
+                <input type="number" id="d12" value="0"/>
+                <br>
+                <label for="d20"> D20</label>
+                <input type="number" id="d20" value="0"/>
+                <br>
+                <input type="submit" ng-click ='rollDice()' value="Roll"/>
+            </form>
+            <p>
+                
+                <h3>Value of Roll: </h3>
+                <p id = "diceValue"></p>
+    </div>
+    
+    <hr>
+    <span id="indexMsg">
+        <%= msg %>
+    </span>
+    <hr>
+    <span id="colorText">
+    Color
+        <%= color %>
+      </span>
+     <hr>
+      
+      <a id="logoutLink" href="/logout">logout</a>
+        <a id="editLink" href="/user">Edit User</a>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/javascripts/my_app.js"></script>
+</body>
+      
+</html>
